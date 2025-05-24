@@ -64,19 +64,14 @@ document.querySelectorAll(".fade-in").forEach((el) => {
 document
   .querySelector(".contact-form")
   .addEventListener("submit", function (e) {
-    e.preventDefault();
-
-    // Get form data
     const formData = new FormData(this);
-    const name = formData.get("name");
-    const email = formData.get("email");
+    const name    = formData.get("name");
+    const email   = formData.get("email");
     const message = formData.get("message");
 
-    // Simple validation
-    if (name && email && message) {
-      alert("Thank you for your message! I'll get back to you soon.");
-      this.reset();
-    } else {
+    // If anything is blank, stop and alert
+    if (!name || !email || !message) {
+      e.preventDefault();
       alert("Please fill in all fields.");
     }
   });
