@@ -340,26 +340,33 @@
         </p>
 
         <form
-          action="mailto:saulavi21@gmail.com"
+          action="https://formspree.io/f/mldbydly"
           method="POST"
-          enctype="text/plain"
           class="contact-form fade-in"
         >
-          <!-- Optional default subject -->
-          <input type="hidden" name="Subject" value="Portfolio Inquiry" />
+          <!-- Optional: set your own default subject -->
+          <input type="hidden" name="_subject" value="Portfolio Inquiry" />
+
+          <!-- Optional: redirect to a thank‑you page -->
+          <!-- <input type="hidden" name="_next" value="https://saulmor.github.io/thank-you.html" /> -->
 
           <div class="form-group">
             <label for="name">Name</label>
-            <input type="text" id="name" name="Name" required />
+            <!-- lowercase “name” field -->
+            <input type="text" id="name" name="name" required />
           </div>
+
           <div class="form-group">
             <label for="email">Email</label>
-            <input type="email" id="email" name="Email" required />
+            <!-- Formspree looks for “_replyto” to know where to reply -->
+            <input type="email" id="email" name="_replyto" required />
           </div>
+
           <div class="form-group">
             <label for="message">Message</label>
-            <textarea id="message" name="Message" rows="5" required></textarea>
+            <textarea id="message" name="message" rows="5" required></textarea>
           </div>
+
           <button type="submit" class="submit-btn">Send Message</button>
         </form>
 
@@ -370,7 +377,6 @@
           >
             <i class="fa-brands fa-linkedin"></i>
           </a>
-
           <a href="https://github.com/SaulMor" class="social-link">
             <i class="fa-brands fa-github"></i>
           </a>
