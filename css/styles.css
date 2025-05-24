@@ -4,6 +4,12 @@
   box-sizing: border-box;
 }
 
+:root {
+  --primary: #667eea;
+  --secondary: #764ba2;
+  --accent: #f2b134; /* new pop of warmth */
+}
+
 body {
   font-family: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
   line-height: 1.6;
@@ -89,6 +95,8 @@ nav.scrolled {
   color: white;
   text-align: center;
   padding: 0 2rem;
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  animation: hueShift 15s infinite linear;
 }
 
 .hero-content {
@@ -137,6 +145,7 @@ nav.scrolled {
   font-weight: 600;
   transition: all 0.3s ease;
   border: 2px solid rgba(255, 255, 255, 0.3);
+  background: linear-gradient(135deg, var(--accent), var(--secondary));
 }
 
 .cta-button:hover {
@@ -177,7 +186,7 @@ nav.scrolled {
   border-radius: 50%;
   object-fit: cover;
   border: 4px solid #667eea;
-  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
 }
 
 .about-text {
@@ -248,20 +257,20 @@ nav.scrolled {
 }
 
 .project-card.hidden {
- display: none;
+  display: none;
 }
 
 .project-image {
-  height: 200px;             /* same as before */
-  overflow: hidden;          /* crop any overflow */
+  height: 200px; /* same as before */
+  overflow: hidden; /* crop any overflow */
   border-bottom: 1px solid #eee;
 }
 
 .project-image img {
   width: 100%;
   height: 100%;
-  object-fit: cover;         /* fill & crop */
-  display: block;            /* remove inline‑img gaps */
+  object-fit: cover; /* fill & crop */
+  display: block; /* remove inline‑img gaps */
 }
 
 .project-content {
@@ -302,14 +311,32 @@ nav.scrolled {
 }
 
 .project-link {
+  position: relative;
   color: #667eea;
   text-decoration: none;
   font-weight: 600;
   transition: color 0.3s ease;
+  overflow: hidden;
+}
+
+.project-link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 3px;
+  background: var(--accent);
+  transform: translateX(-100%);
+  transition: transform 0.3s ease;
 }
 
 .project-link:hover {
   color: #764ba2;
+}
+
+.project-link:hover::after {
+  transform: translateX(0);
 }
 
 /* Contact Section */
@@ -380,11 +407,11 @@ nav.scrolled {
 }
 
 .social-link {
-  display: flex;                 
+  display: flex;
   align-items: center;
   justify-content: center;
 
-  width: 3.5rem;                 
+  width: 3.5rem;
   height: 3.5rem;
 
   background: white;
@@ -395,10 +422,9 @@ nav.scrolled {
   color: #667eea;
   text-decoration: none;
 
-  font-size: 1.6rem;             
-  padding: 0;                    
+  font-size: 1.6rem;
+  padding: 0;
 }
-
 
 .social-link:hover {
   transform: translateY(-5px);
@@ -422,6 +448,15 @@ footer {
   to {
     opacity: 1;
     transform: translateY(0);
+  }
+}
+
+@keyframes hueShift {
+  from {
+    filter: hue-rotate(0deg);
+  }
+  to {
+    filter: hue-rotate(360deg);
   }
 }
 
