@@ -70,3 +70,109 @@ document.querySelectorAll(".project-card").forEach((card) => {
     this.style.transform = "translateY(0) scale(1)";
   });
 });
+
+document.addEventListener("DOMContentLoaded", () => {
+  // ——— TYPEWRITER ———
+  const phrases = ["Full‑Stack Developer", "Data Scientist", "Problem Solver"];
+  const typedText = document.getElementById("typed-text");
+  const cursor = document.querySelector(".cursor");
+  let phraseIndex = 0,
+    charIndex = 0,
+    isDeleting = false;
+
+  function type() {
+    const current = phrases[phraseIndex];
+    // **use pre‑decrement** when deleting, so charIndex never goes negative
+    charIndex = isDeleting ? Math.max(charIndex - 1, 0) : charIndex + 1;
+
+    typedText.textContent = current.substring(0, charIndex);
+
+    if (!isDeleting && charIndex === current.length) {
+      isDeleting = true;
+      setTimeout(type, 1500);
+    } else if (isDeleting && charIndex === 0) {
+      isDeleting = false;
+      phraseIndex = (phraseIndex + 1) % phrases.length;
+      setTimeout(type, 500);
+    } else {
+      setTimeout(type, isDeleting ? 100 : 150);
+    }
+  }
+  type();
+
+  // ——— STARFIELD ———
+  const canvas = document.getElementById("starfield");
+  const ctx = canvas.getContext("2d");
+
+  // **1) Declare stars array and shooting star state first**
+  const stars = [];
+  let shooting = null;
+
+  // 2) resize handler generates stars to fill the canvas
+  function resizeCanvas() {
+    canvas.width = canvas.clientWidth;
+    canvas.height = canvas.clientHeight;
+
+    stars.length = 0; // clear old stars
+    for (let i = 0; i < 200; i++) {
+      stars.push({
+        x: Math.random() * canvas.width,
+        y: Math.random() * canvas.height,
+        r: Math.random() * 1.2 + 0.3,
+      });
+    }
+  }
+
+  // hook up resize and call once
+  window.addEventListener("resize", resizeCanvas);
+  resizeCanvas();
+
+  // 3) Draw loop
+  function draw() {
+    ctx.fillStyle = "black";
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+    // static stars
+    ctx.fillStyle = "white";
+    stars.forEach((s) => {
+      ctx.beginPath();
+      ctx.arc(s.x, s.y, s.r, 0, Math.PI * 2);
+      ctx.fill();
+    });
+
+    // maybe spawn a shooting star
+    if (!shooting && Math.random() < 0.005) {
+      shooting = {
+        x: Math.random() * canvas.width,
+        y: -20,
+        len: Math.random() * 150 + 50,
+        speed: Math.random() * 5 + 4,
+      };
+    }
+
+    // draw shooting star
+    if (shooting) {
+      ctx.strokeStyle = "rgba(255,255,255,0.8)";
+      ctx.lineWidth = 2;
+      ctx.beginPath();
+      ctx.moveTo(shooting.x, shooting.y);
+      ctx.lineTo(shooting.x + shooting.len, shooting.y + shooting.len * 0.2);
+      ctx.stroke();
+
+      shooting.x += shooting.speed;
+      shooting.y += shooting.speed * 0.2;
+
+      if (shooting.x > canvas.width || shooting.y > canvas.height) {
+        shooting = null;
+      }
+    }
+
+    requestAnimationFrame(draw);
+  }
+
+  draw();
+});
+
+document.getElementById('dark-toggle').addEventListener('click', () => {
+  document.body.classList.toggle('dark');
+});

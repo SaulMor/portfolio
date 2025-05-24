@@ -27,12 +27,16 @@
 
     <!-- Hero Section -->
     <section id="home" class="hero">
+      <canvas id="starfield"></canvas>
       <div class="hero-content">
         <img
           src="images/headshot.jpg"
           alt="Saul's Profile Photo"
           class="profile-image"
         />
+        <p class="hero-subtitle">
+          I’m a&nbsp;<span id="typed-text"></span><span class="cursor"></span>
+        </p>
         <h1>Hi, I'm Saul!</h1>
         <p>
           Full Stack Developer & Data Scientist crafting digital experiences
@@ -43,9 +47,10 @@
     </section>
 
     <!-- About Section -->
-    <section id="about" class="section">
+    <section id="about" class="section about-card">
       <h2 class="section-title fade-in">About Me</h2>
       <div class="about-content fade-in">
+        <!-- Left column: photo -->
         <div class="about-image">
           <img
             src="images/grad-pic.JPEG"
@@ -53,6 +58,8 @@
             class="about-photo"
           />
         </div>
+
+        <!-- Right column: text, skills, hobbies -->
         <div class="about-text">
           <p>
             I'm a passionate developer who loves turning complex problems into
@@ -66,7 +73,7 @@
             my next audition, exploring the latest story‑driven video games, and
             spending time with my family. Whether I’m optimizing code or
             learning a monologue, I bring curiosity, collaboration, and creative
-            problem‑solving to everything I do. .
+            problem‑solving to everything I do.
           </p>
 
           <p>
@@ -76,6 +83,7 @@
             by—feel free to look around and say hello!
           </p>
 
+          <!-- Skill tags -->
           <div class="skills">
             <span class="skill-tag">JavaScript</span>
             <span class="skill-tag">Python</span>
@@ -88,8 +96,6 @@
             <span class="skill-tag">GitHub Actions</span>
             <span class="skill-tag">Redis & Celery</span>
             <span class="skill-tag">MongoDB</span>
-            <span class="skill-tag">Scikit‑learn</span>
-            <span class="skill-tag">TensorFlow</span>
             <span class="skill-tag">Pandas & Matplotlib</span>
             <span class="skill-tag">REST APIs</span>
             <span class="skill-tag">CI/CD</span>
@@ -372,9 +378,7 @@
             <img src="images/globe-pic.avif" alt="World Happiness screenshot" />
           </div>
           <div class="project-content">
-            <h3 class="project-title">
-              World Happiness
-            </h3>
+            <h3 class="project-title">World Happiness</h3>
             <p class="project-description">
               Built linear & Random Forest regressors; feature engineering &
               hyper‑parameter tuning cut RMSE by 32%.
@@ -461,5 +465,15 @@
     </footer>
 
     <script src="js/main.js" defer></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/vanilla-tilt@1.7.0/dist/vanilla-tilt.min.js"></script>
+    <script>
+      VanillaTilt.init(document.querySelectorAll(".project-card"), {
+        max: 10,
+        speed: 400,
+        glare: true,
+        "max-glare": 0.2,
+      });
+    </script>
   </body>
 </html>
