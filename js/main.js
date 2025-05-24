@@ -60,22 +60,6 @@ document.querySelectorAll(".fade-in").forEach((el) => {
   observer.observe(el);
 });
 
-// Contact form submission
-document
-  .querySelector(".contact-form")
-  .addEventListener("submit", function (e) {
-    const formData = new FormData(this);
-    const name    = formData.get("name");
-    const email   = formData.get("email");
-    const message = formData.get("message");
-
-    // If anything is blank, stop and alert
-    if (!name || !email || !message) {
-      e.preventDefault();
-      alert("Please fill in all fields.");
-    }
-  });
-
 // Add some dynamic interactions
 document.querySelectorAll(".project-card").forEach((card) => {
   card.addEventListener("mouseenter", function () {
