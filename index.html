@@ -5,9 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Saul Moreno‑Avila — Developer Portfolio</title>
     <link
-    rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
-    crossorigin="anonymous"
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+      crossorigin="anonymous"
     />
     <link rel="stylesheet" href="css/styles.css" />
   </head>
@@ -92,130 +92,192 @@
       </div>
 
       <div class="projects-grid fade-in">
-        <!-- SWE Projects -->
+        <!-- SWE: QuickTask API -->
         <div class="project-card" data-category="swe">
-          <div class="project-image">E-Commerce Platform</div>
+          <div class="project-image">QuickTask API</div>
           <div class="project-content">
-            <h3 class="project-title">E-Commerce Platform</h3>
+            <h3 class="project-title">QuickTask API</h3>
             <p class="project-description">
-              A full-stack e-commerce solution with user authentication, payment
-              processing, and admin dashboard.
+              Developed an asynchronous REST API with FastAPI for CRUD on users
+              & tasks; containerized with Docker, CI/CD via GitHub Actions, and
+              background jobs via Celery + Redis.
             </p>
             <div class="project-tech">
-              <span class="tech-tag">React</span>
+              <span class="tech-tag">FastAPI</span>
+              <span class="tech-tag">SQLAlchemy</span>
+              <span class="tech-tag">Celery</span>
+              <span class="tech-tag">Redis</span>
+              <span class="tech-tag">Docker</span>
+              <span class="tech-tag">GitHub Actions</span>
+            </div>
+            <div class="project-links">
+              <a
+                href="https://github.com/SaulMor/QuickTask-API"
+                class="project-link"
+                target="_blank"
+                rel="noopener"
+              >
+                GitHub Repo
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- SWE: Eventify -->
+        <div class="project-card" data-category="swe">
+          <div class="project-image">Eventify</div>
+          <div class="project-content">
+            <h3 class="project-title">Eventify</h3>
+            <p class="project-description">
+              Full‑stack web platform with Node.js, Express & MongoDB for
+              buying/selling event decorations; EJS‑based views, Agile teamwork,
+              and deployment docs.
+            </p>
+            <div class="project-tech">
               <span class="tech-tag">Node.js</span>
+              <span class="tech-tag">Express.js</span>
               <span class="tech-tag">MongoDB</span>
-              <span class="tech-tag">Stripe API</span>
+              <span class="tech-tag">EJS</span>
+              <span class="tech-tag">CSS</span>
+              <span class="tech-tag">JavaScript</span>
             </div>
             <div class="project-links">
-              <a href="#" class="project-link">Live Demo</a>
-              <a href="#" class="project-link">GitHub</a>
+              <a
+                href="https://github.com/SaulMor/Eventify"
+                class="project-link"
+                target="_blank"
+                rel="noopener"
+              >
+                GitHub Repo
+              </a>
             </div>
           </div>
         </div>
 
+        <!-- SWE: Online Restaurant Ordering -->
         <div class="project-card" data-category="swe">
-          <div class="project-image">Task Management App</div>
+          <div class="project-image">Online Restaurant App</div>
           <div class="project-content">
-            <h3 class="project-title">Task Management App</h3>
+            <h3 class="project-title">Online Restaurant Ordering</h3>
             <p class="project-description">
-              A collaborative task management application with real-time updates
-              and team collaboration features.
+              Backend in FastAPI & SQLAlchemy handling orders, sessions, and
+              payments; unit‑tested endpoints, Agile‑driven.
             </p>
             <div class="project-tech">
-              <span class="tech-tag">Vue.js</span>
-              <span class="tech-tag">Express</span>
-              <span class="tech-tag">Socket.io</span>
-              <span class="tech-tag">PostgreSQL</span>
+              <span class="tech-tag">FastAPI</span>
+              <span class="tech-tag">Python</span>
+              <span class="tech-tag">SQLAlchemy</span>
             </div>
             <div class="project-links">
-              <a href="#" class="project-link">Live Demo</a>
-              <a href="#" class="project-link">GitHub</a>
+              <a
+                href="https://github.com/SaulMor/online-restaurant-ordering"
+                class="project-link"
+                target="_blank"
+                rel="noopener"
+              >
+                GitHub Repo
+              </a>
             </div>
           </div>
         </div>
 
-        <!-- Data Science Projects -->
-        <div class="project-card" data-category="ds">
-          <div class="project-image">Sales Prediction Model</div>
+        <!-- SWE: CineCritic Hub -->
+        <div class="project-card" data-category="swe">
+          <div class="project-image">CineCritic Hub</div>
           <div class="project-content">
-            <h3 class="project-title">Sales Prediction Model</h3>
+            <h3 class="project-title">CineCritic Hub</h3>
             <p class="project-description">
-              Machine learning model that predicts future sales based on
-              historical data and market trends.
+              Interactive movie review app using TMDB API; dynamic modals, user
+              auth & async JS for 100+ titles.
+            </p>
+            <div class="project-tech">
+              <span class="tech-tag">HTML</span>
+              <span class="tech-tag">CSS</span>
+              <span class="tech-tag">JavaScript</span>
+              <span class="tech-tag">TMDB API</span>
+            </div>
+            <div class="project-links">
+              <a
+                href="https://github.com/SaulMor/CineCritic-Hub"
+                class="project-link"
+                target="_blank"
+                rel="noopener"
+              >
+                GitHub Repo
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- DS: Predicting House Prices -->
+        <div class="project-card" data-category="ds">
+          <div class="project-image">House Price Prediction</div>
+          <div class="project-content">
+            <h3 class="project-title">Predicting House Prices</h3>
+            <p class="project-description">
+              Built linear & Random Forest regressors; feature engineering &
+              hyper‑parameter tuning cut RMSE by 32%.
             </p>
             <div class="project-tech">
               <span class="tech-tag">Python</span>
-              <span class="tech-tag">Scikit-learn</span>
+              <span class="tech-tag">Scikit‑learn</span>
               <span class="tech-tag">Pandas</span>
               <span class="tech-tag">Matplotlib</span>
             </div>
             <div class="project-links">
-              <a href="#" class="project-link">Notebook</a>
-              <a href="#" class="project-link">GitHub</a>
+              <a
+                href="https://github.com/SaulMor/house-price-prediction"
+                class="project-link"
+                target="_blank"
+                rel="noopener"
+              >
+                GitHub Notebook
+              </a>
+              <a
+                href="https://your-wix-site.com/house-prices"
+                class="project-link"
+                target="_blank"
+                rel="noopener"
+              >
+                View Demo
+              </a>
             </div>
           </div>
         </div>
 
+        <!-- DS: Student Performance Analysis -->
         <div class="project-card" data-category="ds">
-          <div class="project-image">Customer Segmentation</div>
+          <div class="project-image">Student Performance</div>
           <div class="project-content">
-            <h3 class="project-title">Customer Segmentation Analysis</h3>
+            <h3 class="project-title">
+              Impact of Factors on Student Performance
+            </h3>
             <p class="project-description">
-              Comprehensive analysis using clustering algorithms to identify
-              distinct customer segments for targeted marketing.
+              Random Forest classifier with SMOTE handled imbalance; achieved
+              89.7% accuracy and strong F1 scores.
             </p>
             <div class="project-tech">
               <span class="tech-tag">Python</span>
-              <span class="tech-tag">K-means</span>
-              <span class="tech-tag">Seaborn</span>
-              <span class="tech-tag">Jupyter</span>
+              <span class="tech-tag">Pandas</span>
+              <span class="tech-tag">Scikit‑learn</span>
             </div>
             <div class="project-links">
-              <a href="#" class="project-link">Notebook</a>
-              <a href="#" class="project-link">GitHub</a>
-            </div>
-          </div>
-        </div>
-
-        <div class="project-card" data-category="swe">
-          <div class="project-image">Weather Dashboard</div>
-          <div class="project-content">
-            <h3 class="project-title">Weather Dashboard</h3>
-            <p class="project-description">
-              Interactive weather dashboard with location-based forecasts and
-              historical weather data visualization.
-            </p>
-            <div class="project-tech">
-              <span class="tech-tag">JavaScript</span>
-              <span class="tech-tag">Chart.js</span>
-              <span class="tech-tag">Weather API</span>
-              <span class="tech-tag">CSS3</span>
-            </div>
-            <div class="project-links">
-              <a href="#" class="project-link">Live Demo</a>
-              <a href="#" class="project-link">GitHub</a>
-            </div>
-          </div>
-        </div>
-
-        <div class="project-card" data-category="ds">
-          <div class="project-image">Stock Market Analysis</div>
-          <div class="project-content">
-            <h3 class="project-title">Stock Market Trend Analysis</h3>
-            <p class="project-description">
-              Time series analysis of stock market data with predictive modeling
-              and risk assessment.
-            </p>
-            <div class="project-tech">
-              <span class="tech-tag">Python</span>
-              <span class="tech-tag">TensorFlow</span>
-              <span class="tech-tag">Plotly</span>
-              <span class="tech-tag">Yahoo Finance API</span>
-            </div>
-            <div class="project-links">
-              <a href="#" class="project-link">Notebook</a>
-              <a href="#" class="project-link">GitHub</a>
+              <a
+                href="https://github.com/SaulMor/student-performance-analysis"
+                class="project-link"
+                target="_blank"
+                rel="noopener"
+              >
+                GitHub Notebook
+              </a>
+              <a
+                href="https://your-wix-site.com/student-performance"
+                class="project-link"
+                target="_blank"
+                rel="noopener"
+              >
+                View Demo
+              </a>
             </div>
           </div>
         </div>
@@ -255,7 +317,10 @@
             <i class="fa-brands fa-linkedin"></i>
           </a>
 
-          <a href="https://github.com/SaulMor" class="social-link"></a>
+          <a href="https://github.com/SaulMor" class="social-link">
+            <i class="fa-brands fa-github"></i>
+          </a>
+
           <a href="#" class="social-link"></a>
           <a href="#" class="social-link"></a>
         </div>
