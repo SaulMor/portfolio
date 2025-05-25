@@ -16,6 +16,20 @@ body {
   overflow-x: hidden;
 }
 
+.resume-link {
+  background: var(--accent);
+  color: white;
+  padding: 0.6rem 1.2rem;
+  border-radius: 25px;
+  font-weight: 600;
+  transition: background 0.3s;
+}
+
+.resume-link:hover{
+  background: var(--primary);
+}
+
+
 /* Navigation */
 nav {
   position: fixed;
