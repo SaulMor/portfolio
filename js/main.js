@@ -100,79 +100,74 @@ document.addEventListener("DOMContentLoaded", () => {
   }
   type();
 
-  // ——— STARFIELD ———
-  const canvas = document.getElementById("starfield");
-  const ctx = canvas.getContext("2d");
-
-  // **1) Declare stars array and shooting star state first**
-  const stars = [];
-  let shooting = null;
-
-  // 2) resize handler generates stars to fill the canvas
-  function resizeCanvas() {
-    canvas.width = canvas.clientWidth;
-    canvas.height = canvas.clientHeight;
-
-    stars.length = 0; // clear old stars
-    for (let i = 0; i < 200; i++) {
-      stars.push({
-        x: Math.random() * canvas.width,
-        y: Math.random() * canvas.height,
-        r: Math.random() * 1.2 + 0.3,
-      });
-    }
-  }
-
-  // hook up resize and call once
-  window.addEventListener("resize", resizeCanvas);
-  resizeCanvas();
-
-  // 3) Draw loop
-  function draw() {
-    ctx.fillStyle = "black";
-    ctx.fillRect(0, 0, canvas.width, canvas.height);
-
-    // static stars
-    ctx.fillStyle = "white";
-    stars.forEach((s) => {
-      ctx.beginPath();
-      ctx.arc(s.x, s.y, s.r, 0, Math.PI * 2);
-      ctx.fill();
-    });
-
-    // maybe spawn a shooting star
-    if (!shooting && Math.random() < 0.005) {
-      shooting = {
-        x: Math.random() * canvas.width,
-        y: -20,
-        len: Math.random() * 150 + 50,
-        speed: Math.random() * 5 + 4,
-      };
-    }
-
-    // draw shooting star
-    if (shooting) {
-      ctx.strokeStyle = "rgba(255,255,255,0.8)";
-      ctx.lineWidth = 2;
-      ctx.beginPath();
-      ctx.moveTo(shooting.x, shooting.y);
-      ctx.lineTo(shooting.x + shooting.len, shooting.y + shooting.len * 0.2);
-      ctx.stroke();
-
-      shooting.x += shooting.speed;
-      shooting.y += shooting.speed * 0.2;
-
-      if (shooting.x > canvas.width || shooting.y > canvas.height) {
-        shooting = null;
+  // ——— FLOATING CODE ELEMENTS ———
+  // Add subtle mouse interaction to code elements
+  const codeElements = document.querySelectorAll('.code-element');
+  
+  document.addEventListener('mousemove', (e) => {
+    const mouseX = e.clientX;
+    const mouseY = e.clientY;
+    
+    codeElements.forEach((element, index) => {
+      const rect = element.getBoundingClientRect();
+      const elementX = rect.left + rect.width / 2;
+      const elementY = rect.top + rect.height / 2;
+      
+      const distance = Math.sqrt(
+        Math.pow(mouseX - elementX, 2) + Math.pow(mouseY - elementY, 2)
+      );
+      
+      if (distance < 200) {
+        const force = (200 - distance) / 200;
+        const angle = Math.atan2(elementY - mouseY, elementX - mouseX);
+        const moveX = Math.cos(angle) * force * 10;
+        const moveY = Math.sin(angle) * force * 10;
+        
+        element.style.transform = `translate(${moveX}px, ${moveY}px) rotate(${force * 45}deg)`;
+        element.style.opacity = Math.min(0.3, 0.1 + force * 0.2);
+      } else {
+        element.style.transform = 'translate(0, 0) rotate(0deg)';
+        element.style.opacity = '';
       }
-    }
-
-    requestAnimationFrame(draw);
-  }
-
-  draw();
+    });
+  });
+  
+  // Reset on mouse leave
+  document.addEventListener('mouseleave', () => {
+    codeElements.forEach(element => {
+      element.style.transform = 'translate(0, 0) rotate(0deg)';
+      element.style.opacity = '';
+    });
+  });
 });
 
-document.getElementById('dark-toggle').addEventListener('click', () => {
-  document.body.classList.toggle('dark');
+// Theme switching functionality
+const themeToggle = document.getElementById('theme-toggle');
+const themeIcon = themeToggle.querySelector('i');
+const body = document.body;
+
+// Check for saved theme preference or default to light mode
+const savedTheme = localStorage.getItem('theme') || 'light';
+body.setAttribute('data-theme', savedTheme);
+
+// Update icon based on current theme
+function updateThemeIcon(theme) {
+  if (theme === 'dark') {
+    themeIcon.className = 'fas fa-sun';
+  } else {
+    themeIcon.className = 'fas fa-moon';
+  }
+}
+
+// Initialize icon
+updateThemeIcon(savedTheme);
+
+// Theme toggle event listener
+themeToggle.addEventListener('click', () => {
+  const currentTheme = body.getAttribute('data-theme');
+  const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+  
+  body.setAttribute('data-theme', newTheme);
+  localStorage.setItem('theme', newTheme);
+  updateThemeIcon(newTheme);
 });
