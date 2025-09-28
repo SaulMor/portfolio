@@ -73,7 +73,7 @@ document.querySelectorAll(".project-card").forEach((card) => {
 
 document.addEventListener("DOMContentLoaded", () => {
   // ——— TYPEWRITER ———
-  const phrases = ["Full‑Stack Developer", "Data Scientist", "Problem Solver"];
+  const phrases = ["Full‑Stack Developer", "Cloud Engineer", "Problem Solver"];
   const typedText = document.getElementById("typed-text");
   const cursor = document.querySelector(".cursor");
   let phraseIndex = 0,
